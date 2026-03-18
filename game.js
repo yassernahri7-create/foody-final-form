@@ -86,7 +86,7 @@ function handleBoxClick(index) {
         back.innerHTML = '❌';
         back.style.backgroundColor = '#fee2e2'; // Light red
         back.style.color = '#e01e2f';
-        back.style.fontSize = '2.5rem';
+        back.style.fontSize = '2rem';
 
         // Add a slight delay so they can see the X before the popup covering it
         setTimeout(() => endGame(currentPlayer), 600);
@@ -95,7 +95,7 @@ function handleBoxClick(index) {
         const back = box.querySelector('.gb-back');
         back.innerHTML = '😄';
         back.style.backgroundColor = '#dcfce7'; // Light green
-        back.style.fontSize = '2.5rem';
+        back.style.fontSize = '2rem';
 
         // Next player
         currentPlayer++;
