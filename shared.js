@@ -439,7 +439,11 @@ window.getItemPrice = function (item, sizeKey) {
     }
 
     if (window.isItemInPromo(item.id)) {
-        return basePrice * 0.8; // 20% Discount
+        // If the admin specified a custom promo price, use it. Otherwise 20% off.
+        if (item.promoPrice && item.promoPrice > 0) {
+            return item.promoPrice;
+        }
+        return basePrice * 0.8; // 20% Discount fallback
     }
     return basePrice;
 };

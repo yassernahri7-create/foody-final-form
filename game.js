@@ -4,7 +4,7 @@
 
 let numPlayers = 4;
 let currentPlayer = 1;
-let totalBoxes = 24;
+let totalBoxes = 20; // Changed from 24 to 20 for a perfect 4x5 grid
 let trapIndex = -1;
 let revealedCount = 0;
 let gameActive = false;

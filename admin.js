@@ -290,6 +290,7 @@ function editItem(id) {
     document.getElementById('itemFeatured').checked = item.featured || false;
     const availableCb = document.getElementById('itemAvailable');
     if (availableCb) availableCb.checked = item.available !== false;
+    document.getElementById('itemPromoPrice').value = item.promoPrice || '';
 
     // Store ALL existing images (including base64) for preservation during save
     const existingImages = item.images && item.images.length > 0 ? item.images : (item.img ? [item.img] : []);
@@ -313,6 +314,7 @@ function resetFoodForm() {
     document.getElementById('foodForm').reset();
     document.getElementById('itemFeatured').checked = false;
     document.getElementById('itemHasSizes').checked = false;
+    document.getElementById('itemPromoPrice').value = '';
     const availableCb = document.getElementById('itemAvailable');
     if (availableCb) availableCb.checked = true;
     toggleSizesUI();
@@ -375,6 +377,7 @@ function initForms() {
         const desc = document.getElementById('itemDesc').value.trim();
         const featured = document.getElementById('itemFeatured').checked;
         const available = document.getElementById('itemAvailable').checked;
+        const promoPrice = parseFloat(document.getElementById('itemPromoPrice').value) || null;
 
         const hasSizes = document.getElementById('itemHasSizes').checked;
         let price = 0;
@@ -398,7 +401,7 @@ function initForms() {
             if (index !== -1) {
                 menu[index] = {
                     ...menu[index],
-                    name, cat, desc, ingredients, price,
+                    name, cat, desc, ingredients, price, promoPrice,
                     hasSizes, sizes,
                     images: finalImages,
                     img: finalImages[0] || menu[index].img || '',
@@ -410,7 +413,7 @@ function initForms() {
         } else {
             const newItem = {
                 id: Date.now(),
-                name, cat, desc, ingredients, price,
+                name, cat, desc, ingredients, price, promoPrice,
                 hasSizes, sizes,
                 images: finalImages,
                 img: finalImages[0] || '',

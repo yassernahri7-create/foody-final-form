@@ -1244,7 +1244,7 @@
     },
     {
       "id": 119,
-      "cat": "Thé et Infusion",
+      "cat": "Petit Déjeuner",
       "name": "Thé à la Menthe",
       "desc": "Thé à la menthe traditionnel marocain",
       "price": 12,
@@ -1255,7 +1255,12 @@
         "Sucre"
       ],
       "badge": "",
-      "img": ""
+      "img": "",
+      "promoPrice": 25,
+      "hasSizes": false,
+      "sizes": null,
+      "featured": false,
+      "available": true
     },
     {
       "id": 120,
@@ -1853,8 +1858,10 @@
     "tiktok": "",
     "whatsapp": "212626081745"
   },
-  "promoId": null,
-  "promoIds": [],
+  "promoId": 119,
+  "promoIds": [
+    119
+  ],
   "superCategories": [
     {
       "id": "breakfast",
