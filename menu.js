@@ -219,7 +219,7 @@ function renderPromoCarousel() {
                         <span class="price-old">${item.price.toFixed(0)} MAD</span>
                     </div>
                 </div>
-                <button class="promo-add-vibrant" onclick="event.stopPropagation();addToCart(${item.id})">
+                <button class="promo-add-vibrant" onclick="event.stopPropagation();addToCart(${item.id}); openDrawer();">
                     AJOUTER
                 </button>
             </div>

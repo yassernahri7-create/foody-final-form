@@ -65,7 +65,7 @@ function initApp() {
     if (document.getElementById('catScroll')) renderCatNav();
     if (document.getElementById('dropdownMenu')) renderDropdown();
     if (document.getElementById('menuWrap')) renderMenu();
-    renderPromo();
+    renderPromoCarousel();
     renderSocialLinks();
     renderHours();
     renderGallery();
@@ -212,22 +212,73 @@ function closeSocialModal() {
     document.getElementById('socialModal').classList.remove('open');
 }
 
-function renderPromo() {
-    const promoSection = document.getElementById('promo-section');
-    if (!promoId) {
-        if (promoSection) promoSection.style.display = 'none';
-        return;
-    }
-    const item = menu.find(m => m.id == promoId);
-    if (!item) return;
+function renderPromoCarousel() {
+    const container = document.getElementById('promoCarousel');
+    if (!container) return;
 
-    if (promoSection) {
-        promoSection.style.display = 'block';
-        document.getElementById('promo-item-name').textContent = item.name;
-        document.getElementById('promo-item-price').textContent = `MAD ${item.price.toFixed(2)}`;
-        document.getElementById('promo-item-img').src = item.img || '';
-        document.getElementById('promo-item-cta').onclick = () => addItem(item.id);
+    if (window.promoAutoSlideInterval) clearInterval(window.promoAutoSlideInterval);
+
+    const promoIds = window.getPromoIds ? window.getPromoIds() : (promoId ? [promoId] : []);
+    const promoItems = menu.filter(m => promoIds.includes(m.id));
+
+    if (promoItems.length === 0) {
+        document.getElementById('promo-area').style.display = 'none';
+        return;
+    } else {
+        document.getElementById('promo-area').style.display = 'block';
     }
+
+    container.innerHTML = promoItems.map(item => {
+        const discountedPrice = window.getItemPrice ? window.getItemPrice(item) : (item.promoPrice || (item.price * 0.8));
+        return `
+            <div class="promo-card-vibrant" onclick="location.href='menu.html'">
+                <span class="promo-tag-glow">OFFRE</span>
+                <span class="promo-discount-badge">-20%</span>
+                <div class="promo-visual-vibrant">
+                    ${imgTag(item)}
+                    <div class="promo-glow-vibrant"></div>
+                </div>
+                <div class="promo-info-vibrant">
+                    <div class="promo-name-vibrant">${item.name}</div>
+                    <div class="promo-price-vibrant">
+                        <span class="price-new">${discountedPrice.toFixed(0)} MAD</span>
+                        <span class="price-old">${item.price.toFixed(0)} MAD</span>
+                    </div>
+                </div>
+                <button class="promo-add-vibrant" onclick="event.stopPropagation(); addItem(${item.id}); openConfirm();">
+                    AJOUTER
+                </button>
+            </div>
+        `;
+    }).join('');
+
+    startPromoAutoSlide(container);
+}
+
+function startPromoAutoSlide(container) {
+    if (!container) return;
+
+    let isPaused = false;
+    container.onmouseenter = () => isPaused = true;
+    container.onmouseleave = () => isPaused = false;
+    container.ontouchstart = () => isPaused = true;
+    container.ontouchend = () => isPaused = false;
+
+    window.promoAutoSlideInterval = setInterval(() => {
+        if (!isPaused && container.scrollWidth > container.clientWidth) {
+            container.scrollBy({ left: 200, behavior: 'smooth' });
+            if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+                setTimeout(() => container.scrollTo({ left: 0, behavior: 'smooth' }), 500);
+            }
+        }
+    }, 3000);
+}
+
+function scrollPromo(dir) {
+    const container = document.getElementById('promoCarousel');
+    if (!container) return;
+    const scrollAmount = window.innerWidth > 600 ? 500 : 250;
+    container.scrollBy({ left: scrollAmount * dir, behavior: 'smooth' });
 }
 
 

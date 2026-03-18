@@ -4284,3 +4284,309 @@ body.menu-page {
     border-radius: 12px;
   }
 }
+
+/* ════════════ VIBRANT PROMO CAROUSEL (Shared) ════════════ */
+.promo-section-vibrant {
+  margin: 20px 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  width: 100% !important;
+  display: block !important;
+  z-index: 10 !important;
+}
+
+@media (min-width: 1024px) {
+  .promo-section-vibrant {
+    width: 100vw !important;
+    position: relative !important;
+    left: 50% !important;
+    margin-left: -50vw !important;
+    padding: 20px 0 !important;
+    background: linear-gradient(90deg, transparent, rgba(230, 57, 70, 0.05), transparent) !important;
+    z-index: 50 !important;
+  }
+}
+
+#promoCarousel {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 12px !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  padding: 10px !important;
+  scroll-behavior: smooth !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+#promoCarousel::-webkit-scrollbar {
+  display: none !important;
+}
+
+.promo-card-vibrant {
+  min-width: 180px !important;
+  flex: 0 0 180px !important;
+  background: rgba(25, 29, 35, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 18px !important;
+  padding: 12px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  backdrop-filter: blur(15px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+@media (min-width: 1024px) {
+  .promo-card-vibrant {
+    min-width: calc(18% - 15px) !important;
+    flex: 0 0 calc(18% - 15px) !important;
+  }
+}
+
+.promo-card-vibrant:hover {
+  transform: translateY(-8px) scale(1.03) !important;
+  border-color: #e63946 !important;
+  box-shadow: 0 15px 35px rgba(230, 57, 70, 0.4) !important;
+}
+
+.promo-container-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.promo-inner-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.promo-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(230, 57, 70, 0.9);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 5px 20px rgba(230, 57, 70, 0.4);
+}
+
+.promo-nav-btn:hover {
+  background: #ff4d5a;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 30px rgba(230, 57, 70, 0.8);
+}
+
+.promo-nav-btn.prev {
+  left: 10px;
+}
+
+.promo-nav-btn.next {
+  right: 10px;
+}
+
+@media (min-width: 1024px) {
+  .promo-section-vibrant {
+    width: 100% !important;
+    position: relative !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+    padding: 40px 0 !important;
+    background: linear-gradient(90deg, transparent, rgba(230, 57, 70, 0.05), transparent) !important;
+    z-index: 100 !important;
+  }
+
+  .promo-inner-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .promo-nav-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+  }
+
+  .promo-nav-btn.prev {
+    left: -10px;
+  }
+
+  .promo-nav-btn.next {
+    right: -10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .promo-nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .promo-nav-btn.prev {
+    left: 0px;
+  }
+
+  .promo-nav-btn.next {
+    right: 0px;
+  }
+}
+
+.promo-tag-glow {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: #fff;
+  background: #e63946;
+  padding: 2px 6px;
+  border-radius: 6px;
+  z-index: 2;
+  box-shadow: 0 0 10px #e63946;
+  animation: promoPulseGlow 2s infinite;
+}
+
+.promo-discount-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.75rem;
+  font-weight: 900;
+  background: #FFD700;
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 50px;
+  z-index: 2;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.promo-visual-vibrant {
+  width: 100%;
+  height: 100px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: #111;
+}
+
+.promo-visual-vibrant img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.promo-card-vibrant:hover .promo-visual-vibrant img {
+  transform: scale(1.18) !important;
+}
+
+.promo-glow-vibrant {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 20%, rgba(230, 57, 70, 0.3) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.promo-card-vibrant:hover .promo-glow-vibrant {
+  opacity: 1 !important;
+}
+
+.promo-name-vibrant {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price-new {
+  color: #e63946;
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-shadow: 0 0 8px rgba(230, 57, 70, 0.4);
+}
+
+.price-old {
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: line-through;
+  font-size: 0.8rem;
+  margin-left: 6px;
+}
+
+.promo-add-vibrant {
+  width: 100%;
+  background: #fff;
+  border: none;
+  color: #000;
+  font-weight: 800;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-top: auto;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.promo-add-vibrant:hover {
+  background: #e63946 !important;
+  color: #fff !important;
+  box-shadow: 0 0 15px rgba(230, 57, 70, 0.4) !important;
+}
+
+@keyframes promoPulseGlow {
+  0% {
+    box-shadow: 0 0 8px #e63946;
+    filter: brightness(1);
+  }
+
+  50% {
+    box-shadow: 0 0 20px #e63946;
+    filter: brightness(1.2);
+  }
+
+  100% {
+    box-shadow: 0 0 8px #e63946;
+    filter: brightness(1);
+  }
+}
+
+.promo-empty-msg {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 24px;
+  width: 100%;
+  font-size: 1.1rem;
+  color: #8e9297;
+  border: 2px dashed rgba(255, 255, 255, 0.08);
+}
